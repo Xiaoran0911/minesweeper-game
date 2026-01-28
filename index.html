@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Minesweeper</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>💣 Minesweeper</h1>
+
+    <div class="controls">
+      <label>
+        난이도
+        <select id="preset">
+          <option value="easy">Easy (9×9, 10)</option>
+          <option value="medium" selected>Medium (16×16, 40)</option>
+          <option value="hard">Hard (30×16, 99)</option>
+          <option value="custom">Custom</option>
+        </select>
+      </label>
+
+      <label class="custom">
+        W <input id="w" type="number" min="5" max="60" value="16">
+      </label>
+      <label class="custom">
+        H <input id="h" type="number" min="5" max="40" value="16">
+      </label>
+      <label class="custom">
+        💣 <input id="m" type="number" min="1" max="500" value="40">
+      </label>
+
+      <button id="newGame">New Game</button> <button id="hintBtn">Hint</button>
+
+    </div>
+
+    <div class="status">
+      <div>⏱️ <span id="timer">0</span>s</div>
+      <div>🚩 <span id="flags">0</span></div>
+      <div>💣 <span id="mines">0</span></div>
+      <div id="message" class="message"></div>
+      <div>🏆 Best <span id="best">--</span></div>
+      <button id="showScores" class="linkbtn" type="button">기록 보기</button>
+
+    </div>
+  </header>
+
+  <main class="main">
+    <div id="board" class="board" aria-label="Minesweeper Board"></div>
+  </main>
+
+  <div id="modal" class="modal hidden" aria-hidden="true">
+  <div class="modal__panel">
+    <div class="modal__header">
+      <div class="modal__title">🏆 Leaderboard</div>
+      <button id="closeModal" class="modal__close" type="button">✕</button>
+    </div>
+
+    <div class="modal__meta" id="lbMeta"></div>
+
+    <ol id="leaderboard" class="leaderboard"></ol>
+
+    <div class="modal__footer">
+      <button id="clearScores" class="danger" type="button">이 난이도 기록 초기화</button>
+      <button id="closeModal2" type="button">닫기</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+
+  <footer class="footer">
+    <span>Left click: open</span>
+    <span>Right click: flag</span>
+    <span>Double click / chord: open neighbors (when flags match)</span>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>
